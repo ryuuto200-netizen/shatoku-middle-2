@@ -77,8 +77,6 @@ function setCurrent(index) {
     if (active) button.setAttribute('aria-current', 'page');
     else button.removeAttribute('aria-current');
   });
-  const activeTab = document.querySelector(`.page-tab[data-index="${current}"]`);
-  activeTab?.scrollIntoView({block:'nearest', inline:'nearest', behavior:'smooth'});
 }
 
 function resizePapers() {
