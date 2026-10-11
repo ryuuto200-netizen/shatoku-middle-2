@@ -136,13 +136,8 @@ function buildPageList() {
     section.dataset.index = String(index);
     section.setAttribute('aria-label', `${page.page}ページ ${names[index]}`);
     section.innerHTML = `
-      <div class="page-caption"><span><b>${page.page}</b>ページ <span class="caption-dot">·</span> ${names[index]}</span><button class="edit-page" type="button">解答を確認・修正</button></div>
       <div class="paper-stage"><div class="sheet-paper"><div class="sheet-canvas"></div></div></div>
-      <p class="page-note"></p>`;
-    section.querySelector('.edit-page').addEventListener('click', () => {
-      setCurrent(index);
-      openEditor(index);
-    });
+      <p class="page-note sr-only"></p>`;
     list.append(section);
     if (loadObserver) loadObserver.observe(section);
   });
@@ -220,38 +215,6 @@ async function loadPage(index) {
   return task;
 }
 
-function openEditor(index = current) {
-  current = index;
-  const page = pages[index];
-  $('editor-title').textContent = `${page.page}ページ · ${names[index]}`;
-  const list = $('answer-list');
-  list.replaceChildren();
-  page.answers.forEach(answer => {
-    const row = document.createElement('div');
-    row.className = 'edit-row';
-    const label = document.createElement('label');
-    label.htmlFor = `edit-${answer.id}`;
-    label.textContent = answer.context || answer.n || answer.id;
-    const input = document.createElement('input');
-    input.id = `edit-${answer.id}`;
-    input.value = value(answer);
-    input.autocomplete = 'off';
-    input.addEventListener('input', () => {
-      edits[answer.id] = input.value;
-      safeWrite('economics-edits-v1', edits);
-      document.querySelectorAll(`.answer[data-id="${CSS.escape(answer.id)}"]`).forEach(button => updateAnswer(button, answer));
-    });
-    row.append(label, input);
-    if (answer.note || ['supplemented','unfilled','uncertain'].includes(answer.status)) {
-      const small = document.createElement('small');
-      small.textContent = ({supplemented:'補完：写真では未記入',unfilled:'写真では未記入',uncertain:'判読不明'})[answer.status] || answer.note;
-      row.append(small);
-    }
-    list.append(row);
-  });
-  $('editor').showModal();
-}
-
 function observePages() {
   pageObserver = new IntersectionObserver(entries => {
     const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -298,17 +261,6 @@ $('toggle-all').addEventListener('click', () => {
   revealed.clear();
   hiddenOverrides.clear();
   updateVisibility();
-});
-$('close-editor').addEventListener('click', () => $('editor').close());
-$('reset-edits').addEventListener('click', () => {
-  pages[current]?.answers.forEach(answer => delete edits[answer.id]);
-  safeWrite('economics-edits-v1', edits);
-  $('editor').close();
-  const section = document.getElementById(`sheet-${current + 1}`);
-  if (section) {
-    section.classList.remove('is-rendered');
-    loadPage(current);
-  }
 });
 window.addEventListener('resize', requestResize);
 window.addEventListener('scroll', () => {

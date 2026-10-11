@@ -21,7 +21,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid #397cbe; outline-
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 5px max(10px, calc((100vw - 1100px) / 2));
+  padding: 2px max(10px, calc((100vw - 1100px) / 2));
   background: rgba(255,255,255,.97);
   border-bottom: 1px solid #d7d9df;
   box-shadow: 0 2px 8px #21242b0d;
@@ -40,12 +40,12 @@ button:focus-visible, input:focus-visible { outline: 3px solid #397cbe; outline-
 .page-tabs::-webkit-scrollbar { display:none; }
 .page-tab {
   flex: 0 0 48px;
-  min-height: 38px;
+  min-height: 20px;
   border: 1px solid transparent;
-  border-radius: 9px;
+  border-radius: 6px;
   background: #f0f1f5;
   color: #626a79;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   transition: background .15s, color .15s, border-color .15s;
 }
@@ -53,19 +53,19 @@ button:focus-visible, input:focus-visible { outline: 3px solid #397cbe; outline-
 .toggle-all {
   flex: 0 0 auto;
   min-width: 112px;
-  min-height: 38px;
+  min-height: 20px;
   border: 2px solid #d7dbe3;
-  border-radius: 9px;
+  border-radius: 6px;
   background: #fff;
   color: #a52640;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
 }
 .toggle-all[aria-pressed="true"] { border-color: #bf7d8c; background: #fff5f6; }
 
-main { max-width: 1120px; margin: 0 auto; padding: 14px 14px 42px; }
-.pages-list { display: grid; gap: 22px; }
-.sheet-section { scroll-margin-top: 60px; min-width: 0; }
+main { max-width: 1120px; margin: 0 auto; padding: 4px 14px 42px; }
+.pages-list { display: grid; gap: 2px; }
+.sheet-section { scroll-margin-top: 34px; min-width: 0; }
 .page-caption {
   display: flex;
   align-items: center;
@@ -144,29 +144,13 @@ main { max-width: 1120px; margin: 0 auto; padding: 14px 14px 42px; }
 footer { display:flex; justify-content:space-between; gap:12px; width:min(100%, 800px); margin:28px auto 0; padding-top:12px; border-top:1px solid #d1d5dd; color:#898f9a; font-size:10px; }
 #glyph-store { position:absolute; width:0; height:0; overflow:hidden; }
 
-dialog { width:min(540px, 94vw); max-height:86dvh; padding:0; border:1px solid #d9dce3; border-radius:15px; color:#30343d; box-shadow:0 15px 90px #0003; }
-dialog::backdrop { background:#1d202866; backdrop-filter:blur(2px); }
-.dialog-head { position:sticky; top:0; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:15px 20px; border-bottom:1px solid #e4e6eb; background:#fff; }
-.dialog-head p { margin:0 0 3px; color:#858b95; font-size:10px; }
-.dialog-head h2 { margin:0; font-size:16px; }
-.dialog-head button { border:0; background:none; color:#777e89; font-size:25px; }
-.dialog-help { padding:0 20px; color:#777e89; font-size:12px; line-height:1.7; }
-#answer-list { padding:0 20px; }
-.edit-row { padding:10px 0; border-bottom:1px solid #edeef1; }
-.edit-row label { display:block; margin-bottom:4px; color:#727986; font-size:11px; line-height:1.5; }
-.edit-row input { width:100%; border:1px solid #d4d7df; border-radius:6px; padding:9px; color:#ad3040; background:#fff; }
-.edit-row small { display:block; margin:4px 0 0; color:#9b7654; font-size:10px; }
-.dialog-foot { display:flex; justify-content:space-between; gap:8px; padding:16px 20px; }
-.dialog-foot button { border:1px solid #d4d7df; border-radius:6px; padding:8px 10px; background:#fff; color:#646b77; font-size:12px; }
-
 @media(max-width:620px) {
-  .page-nav { gap:5px; padding:5px 8px; }
+  .page-nav { gap:5px; padding:2px 8px; }
   .page-tabs { gap:5px; }
-  .page-tab { flex-basis:44px; min-height:36px; border-radius:8px; font-size:14px; }
-  .toggle-all { min-width:96px; min-height:36px; border-radius:8px; font-size:13px; }
-  main { padding:11px 8px 32px; }
-  .pages-list { gap:19px; }
-  .sheet-section { scroll-margin-top:54px; }
+  .page-tab { flex-basis:44px; min-height:20px; border-radius:6px; font-size:11px; }
+  .toggle-all { min-width:96px; min-height:20px; border-radius:6px; font-size:11px; }
+  main { padding:3px 8px 32px; }
+  .sheet-section { scroll-margin-top:29px; }
   .page-caption { margin-bottom:5px; font-size:10px; }
   .page-caption b { font-size:12px; }
   .edit-page { padding:5px 7px; font-size:10px; }
