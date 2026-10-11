@@ -3,29 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#b83342">
-  <meta name="description" content="経済プリント1〜15ページを、元の配置のまま学ぶ赤シート。タップで個別表示、拡大、解答の修正に対応。">
+  <meta name="theme-color" content="#f3f4f6">
+  <meta name="description" content="経済プリント1〜15ページを、SVGでなめらかに再描画した赤シート。ページを縦に読み進め、空欄をタップして答えを確認できます。">
   <title>経済プリント｜赤シート</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand"><span class="brand-icon" aria-hidden="true">経</span><div><h1>経済プリント</h1><p>2学期中間 · 1–15ページ</p></div></div>
-    <button id="sheet" class="sheet-button" aria-pressed="true">赤シート ON</button>
-  </header>
-  <nav class="controls" aria-label="学習操作">
-    <div class="page-controls"><button id="prev" aria-label="前のページ">‹</button><label class="sr-only" for="pages">ページ</label><select id="pages"></select><button id="next" aria-label="次のページ">›</button></div>
-    <div class="tools"><button id="hide">隠す</button><button id="show">表示</button><button id="zoom-out" aria-label="縮小">−</button><button id="zoom" title="タップで等倍に戻す">100%</button><button id="zoom-in" aria-label="拡大">＋</button></div>
+  <h1 class="sr-only">経済プリント 赤シート</h1>
+  <nav class="page-nav" aria-label="ページ選択">
+    <div id="page-tabs" class="page-tabs"></div>
+    <button id="toggle-all" class="toggle-all" type="button" aria-pressed="false">すべて表示</button>
   </nav>
   <main>
-    <div class="page-meta"><span id="page-name">読み込み中…</span><span id="progress"></span></div>
-    <div id="scroll-area"><div id="page-shell"><div id="paper" role="region" aria-label="経済プリント"></div></div></div>
-    <p id="load-error" role="alert" hidden></p>
-    <div class="under-paper"><p id="hint">空欄をタップすると答えが見えます。ピンチでも拡大できます。</p><button id="edit">解答の確認・修正</button></div>
-    <p id="notes"></p>
-    <footer>元の文字・図・配置を保持したSVG表示 <span>経済1〜15ページ</span></footer>
+    <div id="load-error" role="alert" hidden></div>
+    <div id="pages-list" class="pages-list" aria-label="経済プリント"></div>
+    <footer><span>経済プリント 1〜15ページ</span><span>文字・図をSVGで再描画</span></footer>
   </main>
-  <dialog id="editor"><form method="dialog" class="dialog-head"><h2>このページの解答</h2><button aria-label="閉じる">×</button></form><p class="dialog-help">写真の未記入・判読不明を区別しています。修正はこの端末に保存されます。</p><div id="answer-list"></div><div class="dialog-foot"><button id="reset-edits">このページの修正を戻す</button><button id="close-editor">閉じる</button></div></dialog>
+  <dialog id="editor">
+    <form method="dialog" class="dialog-head"><div><p>解答の確認・修正</p><h2 id="editor-title"></h2></div><button aria-label="閉じる">×</button></form>
+    <p class="dialog-help">入力した修正はこの端末に保存されます。写真の未記入・判読不明も表示しています。</p>
+    <div id="answer-list"></div>
+    <div class="dialog-foot"><button id="reset-edits" type="button">このページの修正を戻す</button><button id="close-editor" type="button">閉じる</button></div>
+  </dialog>
   <div id="glyph-store" aria-hidden="true"></div>
   <script src="app.js" defer></script>
 </body>
