@@ -40,26 +40,32 @@ button:focus-visible, input:focus-visible { outline: 3px solid #397cbe; outline-
 .page-tabs::-webkit-scrollbar { display:none; }
 .page-tab {
   flex: 0 0 48px;
+  height: 20px;
   min-height: 20px;
+  padding: 0;
   border: 1px solid transparent;
   border-radius: 6px;
   background: #f0f1f5;
   color: #626a79;
   font-size: 12px;
   font-weight: 700;
+  line-height: 18px;
   transition: background .15s, color .15s, border-color .15s;
 }
 .page-tab.active { background: var(--soft-red); border-color: #efc4cd; color: #a52640; box-shadow: inset 0 0 0 1px #f5dce1; }
 .toggle-all {
   flex: 0 0 auto;
   min-width: 112px;
+  height: 20px;
   min-height: 20px;
   border: 2px solid #d7dbe3;
   border-radius: 6px;
+  padding: 0 4px;
   background: #fff;
   color: #a52640;
   font-size: 12px;
   font-weight: 700;
+  line-height: 16px;
 }
 .toggle-all[aria-pressed="true"] { border-color: #bf7d8c; background: #fff5f6; }
 
@@ -147,8 +153,8 @@ footer { display:flex; justify-content:space-between; gap:12px; width:min(100%, 
 @media(max-width:620px) {
   .page-nav { gap:5px; padding:2px 8px; }
   .page-tabs { gap:5px; }
-  .page-tab { flex-basis:44px; min-height:20px; border-radius:6px; font-size:11px; }
-  .toggle-all { min-width:96px; min-height:20px; border-radius:6px; font-size:11px; }
+  .page-tab { flex-basis:44px; font-size:11px; }
+  .toggle-all { min-width:96px; font-size:11px; }
   main { padding:3px 8px 32px; }
   .sheet-section { scroll-margin-top:29px; }
   .page-caption { margin-bottom:5px; font-size:10px; }
