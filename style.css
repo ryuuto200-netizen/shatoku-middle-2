@@ -22,10 +22,10 @@ button:focus-visible, input:focus-visible { outline: 3px solid #397cbe; outline-
   align-items: center;
   gap: 8px;
   padding: 2px max(10px, calc((100vw - 1100px) / 2));
-  background: rgba(255,255,255,.97);
-  border-bottom: 1px solid #d7d9df;
-  box-shadow: 0 2px 8px #21242b0d;
-  backdrop-filter: blur(12px);
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 .page-tabs {
   display: flex;
@@ -40,34 +40,34 @@ button:focus-visible, input:focus-visible { outline: 3px solid #397cbe; outline-
 .page-tabs::-webkit-scrollbar { display:none; }
 .page-tab {
   flex: 0 0 48px;
-  height: 20px;
-  min-height: 20px;
+  height: 30px;
+  min-height: 30px;
   padding: 0;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  background: #f0f1f5;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: #626a79;
   font-size: 12px;
   font-weight: 700;
   line-height: 18px;
   transition: background .15s, color .15s, border-color .15s;
 }
-.page-tab.active { background: var(--soft-red); border-color: #efc4cd; color: #a52640; box-shadow: inset 0 0 0 1px #f5dce1; }
+.page-tab.active { background: transparent; border-color: transparent; color: #a52640; box-shadow: none; }
 .toggle-all {
   flex: 0 0 auto;
   min-width: 112px;
-  height: 20px;
-  min-height: 20px;
-  border: 2px solid #d7dbe3;
-  border-radius: 6px;
+  height: 30px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 0;
   padding: 0 4px;
-  background: #fff;
+  background: transparent;
   color: #a52640;
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
 }
-.toggle-all[aria-pressed="true"] { border-color: #bf7d8c; background: #fff5f6; }
+.toggle-all[aria-pressed="true"] { border-color: transparent; background: transparent; color: #7e182d; }
 
 main { max-width: 1120px; margin: 0 auto; padding: 4px 14px 42px; }
 .pages-list { display: grid; gap: 2px; }
